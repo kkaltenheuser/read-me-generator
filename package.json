@@ -1,14 +1,22 @@
 {
-  "name": "static-site",
+  "name": "read-me-generator",
   "version": "1.0.0",
-  "description": "",
+  "description": "read-me-generator created for the purposes of understanding and utilizing backend techniques that do not require console.log to display in the window.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "karen kaltenheuser",
   "license": "ISC",
   "dependencies": {
     "inquirer": "^6.3.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kkaltenheuser/read-me-generator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kkaltenheuser/read-me-generator/issues"
+  },
+  "homepage": "https://github.com/kkaltenheuser/read-me-generator#readme"
 }
