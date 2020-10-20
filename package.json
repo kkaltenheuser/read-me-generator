@@ -8,9 +8,7 @@
   },
   "author": "karen kaltenheuser",
   "license": "ISC",
-  "dependencies": {
-    "inquirer": "^6.3.1"
-  },
+  "dependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kkaltenheuser/read-me-generator.git"
@@ -18,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/kkaltenheuser/read-me-generator/issues"
   },
-  "homepage": "https://github.com/kkaltenheuser/read-me-generator#readme"
+  "homepage": "https://github.com/kkaltenheuser/read-me-generator#readme",
+  "devDependencies": {
+    "inquirer": "^6.5.2"
+  }
 }
