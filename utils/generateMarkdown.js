@@ -15,6 +15,25 @@ function generateMarkdown(data) {
     [Contributing](#-Contributing)
     [Tests](#-Tests)
     [Questions](#-Contact-Information)
+
+    #Installation
+    {data.installation}
+
+    #Usage
+    {data.usage}
+
+    #License
+    {data.license}
+
+    #Contributing
+    {data.contributing}
+
+    #Tests
+    {data.tests}
+
+    #Contact Information
+    * GitHub username: {data.userName}
+    * Contact Email: {data.userEmail}
 `;
 }
 
