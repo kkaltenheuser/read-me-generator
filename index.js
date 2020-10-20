@@ -25,7 +25,7 @@ const questions = [
         name: "description",
         message: "Please enter the description of your project.",
         validate: validateInput,
-    }
+    },
     
 
 // begin table of contents in markdown
@@ -36,14 +36,14 @@ const questions = [
         name: "installation",
         message: "Please explain how to install the software and/or commands for the program",
         validate: validateInput,
-    }
+    },
     // project usage
    {
         type: "input",
         name: "description",
         message: "Please explain how this project can be used.",
         validate: validateInput,
-   }
+   },
         // generate list of options for Licensure for ReadMe
 {
     type: "list",
@@ -59,8 +59,32 @@ const questions = [
         "Open"
     ]
     validate: validateInput,
-},
- // enter email
+    },
+// question for contributing
+    {
+        type: "input",
+        name: "contributing",
+        message: "How can users contribute to this project?",
+        validate: validateInput,
+    },
+// question for tests
+    {
+        type: "input",
+        name: "tests",
+        message: "Please enter any pertinent testing information regarding this project.",
+        validate: validateInput,
+    },
+// questions to identify creator  
+    // enter username
+
+    {
+        type: "input",
+        name: "username",
+        message: "What is your GitHub username?",
+        validate: validateInput;
+    },
+
+    // enter email associated with GitHub
    {
     type: "input",
     name: "email",
