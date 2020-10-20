@@ -6,7 +6,6 @@ const util = require("util");
 const inquirer = require("inquirer");
 // markdown js file 
 const generateMarkdown = require("./utils/generateMarkdown");
-const { error } = require("console");
 // creates a series of asynchronous actions to allow the user to move fluidly in their input
 const writeFileAsync = util.promisify(fs.writeFile);
 
@@ -110,6 +109,11 @@ function writeToFile(fileName, data) {
 
 // function to initialize program
 function init() {
+    inquirer.prompt(questions).then(data) {
+        console.log(JSON.stringify(data, null, ""));
+        data.getLicense = getLicense(data.license);
+        writeToFile("./README.md", data);
+    }
  
 
 }
