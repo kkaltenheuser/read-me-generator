@@ -100,15 +100,30 @@ function writeToFile(fileName, data) {
 }
 
 // function to initialize program
-function init() {
-    inquirer.prompt(questions).then(data) {
-        console.log(JSON.stringify(data, null, ""));
-        data.getLicense = getLicense(data.license);
-        writeToFile("./README.md", data);
-    }
- 
+async function init() {
+    // var to hold account name
+    let name;
+    // var that proves github account exists
+    let gitExists = false;
+    // when github name is not validated
+    while (!gitExists) {
+        // when name provided is valid + account exists, get the Git
+    const { github: account } = await inquirer.prompt(getGit)
+    name = account;
+        const exists = await userExists(account)
+        if (exists) {
+            gitExists = true;
+            console.log("git exists!")
+        } else {
+            console.log("git don't exist, try again")
+        }
 
 }
-
+// response
+    const response = await inquirer.prompt(questions)
+// write to the file
+writeToFile("README.md", generateMarkdown(response, name))    
+    
+    
 // function call to initialize program
 init();
