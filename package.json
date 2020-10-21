@@ -8,7 +8,9 @@
   },
   "author": "karen kaltenheuser",
   "license": "ISC",
-  "dependencies": {},
+  "dependencies": {
+    "axios": "^0.20.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kkaltenheuser/read-me-generator.git"
