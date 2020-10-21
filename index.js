@@ -1,19 +1,28 @@
 // Declaring the dependencies
+//
 // const fs variable
 const fs = require("fs");
-// const util = require("util");
-// inquirer is stored in node_modules via dev dependencies to save space and easier access for future users
+// const util variable
+const util = require("util");
+// const inquirer variable
 const inquirer = require("inquirer");
+// const validate user
 const userExists = require("./api.js");
+// const validate API
 const api = require("./api.js");
-// markdown js file 
+// const markdown js file 
 const generateMarkdown = require("./generateMarkdown.js");
-// creates a series of asynchronous actions to allow the user to move fluidly in their input
-// const writeFileAsync = util.promisify(fs.writeFile);
 
 // array of questions for user
-const questions = [
+const getGit = {
     // initialize set of questions  
+    // questions to identify creator  
+    // enter username
+        type: "input",
+        name: "username",
+        message: "What is your GitHub username?",
+}
+    const questions = [
     // title question
     {   // breakdown of components
         // note type
@@ -71,21 +80,7 @@ const questions = [
         name: "tests",
         message: "Please enter any pertinent testing information regarding this project.",
     },
-    // questions to identify creator  
-    // enter username
-
-    {
-        type: "input",
-        name: "username",
-        message: "What is your GitHub username?",
-    },
-
-    // enter email associated with GitHub
-    {
-        type: "input",
-        name: "email",
-        message: "Please enter your email:",
-    },
+    
 
     // close question portion
 ];
