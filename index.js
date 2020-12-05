@@ -20,7 +20,7 @@ const getGit = {
     // enter username
         type: "input",
         name: "username",
-        message: "What is your GitHub username?",
+        message: "What is your GitHub username?"
 }
     const questions = [
     // title question
@@ -30,13 +30,13 @@ const getGit = {
         // note name
         name: "title",
         // note message that will be deployed
-        message: "What will this project be titled?",
+        message: "What will this project be titled?"
     },
     // project description question
     {
         type: "input",
         name: "description",
-        message: "Please enter the description of your project.",
+        message: "Please enter the description of your project."
     },
     
     // begin TABLE OF CONTENTS in markdown
@@ -45,14 +45,26 @@ const getGit = {
     {
         type: "input",
         name: "installation",
-        message: "Please explain how to install the software and/or commands for the program",
+        message: "Please explain how to install the software and/or commands for the program"
     },
     // project usage
     {
         type: "input",
         name: "description",
-        message: "Please explain how this project can be used.",
-    },
+        message: "Please explain how this project can be used."
+        },
+    // questions for credit
+        {
+            type: "input",
+            name: "credits",
+            message: "Please enter credits"
+        },
+        // question for tests
+        {
+            type: "input",
+            name: "tests",
+            message: "Please enter any pertinent testing information regarding this project."
+        },
     // generate list of options for Licensure for ReadMe
     {
         type: "list",
@@ -68,18 +80,8 @@ const getGit = {
             "Open",
         ]
     },
-    // question for contributing
-    {
-        type: "input",
-        name: "contributing",
-        message: "How can users contribute to this project?",
-    },
-    // question for tests
-    {
-        type: "input",
-        name: "tests",
-        message: "Please enter any pertinent testing information regarding this project.",
-    },
+
+
     
 
     // close question portion
