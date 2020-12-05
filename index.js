@@ -18,10 +18,19 @@ const getGit = {
     // initialize set of questions  
     // questions to identify creator  
     // enter username
-        type: "input",
-        name: "username",
-        message: "What is your GitHub username?"
-}
+    type: "input",
+    name: "username",
+    message: "What is your GitHub username?",
+        
+    // necessary to validate that user entered at least one phrase
+
+    validate: function (answer) {
+        if (answer.length < 1) {
+            return console.log("You must enter a GitHub username.");
+        }
+        return true;
+    }
+},
     const questions = [
     // title question
     {   // breakdown of components
@@ -30,13 +39,29 @@ const getGit = {
         // note name
         name: "title",
         // note message that will be deployed
-        message: "What will this project be titled?"
+            message: "What will this project be titled?",
+        
+        // validate that user entered at least one phrase for a title
+            validate: function (answer) {
+                if (answer.length < 1) {
+                    return console.log("You must enter the title of your GitHub repository.");
+                }
+                return true;
+            }
     },
     // project description question
     {
         type: "input",
         name: "description",
-        message: "Please enter the description of your project."
+        message: "Please enter the description of your project.",
+
+        // We need to validate that user entered at least one word
+        validate: function (answer) {
+            if (answer.length < 1) {
+                return console.log("You must enter a description for your project.");
+            }
+            return true;
+        }
     },
     
     // begin TABLE OF CONTENTS in markdown
@@ -46,7 +71,8 @@ const getGit = {
         type: "input",
         name: "installation",
         message: "Please explain how to install the software and/or commands for the program"
-    },
+            // Validation not required if question is optional
+        },
     // project usage
     {
         type: "input",
@@ -89,38 +115,38 @@ const getGit = {
 
 // function to write README file
 function writeToFile(fileName, data) {
-    fs.writeFile(fileName, generateMarkdown(data), function (error) {
-        if (error) {
-            return console.log(error);
+    fs.writeFile(fileName, data, err => {
+        if (err) {
+            return console.log(err);
         }
+        console.log ("Your markdown file has been generated")
     }); 
 }
 
 // function to initialize program
 async function init() {
-    // var to hold account name
-    let name;
-    // var that proves github account exists
-    let gitExists = false;
-    // when github name is not validated
-    while (!gitExists) {
-        // when name provided is valid + account exists, get the Git
-    const { github: account } = await inquirer.prompt(getGit)
-    name = account;
-        const exists = await userExists(account)
-        if (exists) {
-            gitExists = true;
-            console.log("git exists!")
-        } else {
-            console.log("git don't exist, try again")
-        }
+    try {
+        // Reference inquirer array with prompt
+        const userResponses = await inquirer.prompt(questions);
+        console.log("Your responses: ", userResponses);
+        console.log("Your responses have been logged...");
 
-}
-// response
-    const response = await inquirer.prompt(questions)
-// write to the file
-writeToFile("README.md", generateMarkdown(response, name))    
-    
-    
+        // Referencing API.js
+        const userInfo = await api.getUser(userResponses);
+        console.log("Your GitHub user info: ", userInfo);
+
+        // Pass inquirer + api data to markdown
+        console.log("Generating markdown")
+        const markdown = generateMarkdown(userResponses, userInfo);
+        console.log(markdown);
+
+        // Write markdown
+        await writeFileAsync('ExampleREADME.md', markdown);
+
+    } catch (error) {
+        console.log(error);
+    }
+};
+
 // function call to initialize program
 init();
