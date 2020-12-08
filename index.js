@@ -7,17 +7,17 @@ const util = require("util");
 // const inquirer variable
 const inquirer = require("inquirer");
 // const validate user
-const userExists = require("./api.js");
+const userExists = require("./utils/api");
 // const validate API
-const api = require("./api.js");
+const api = require("./utils/api");
 // const markdown js file 
-const generateMarkdown = require("./generateMarkdown.js");
+const generateMarkdown = require("./utils/generateMarkdown");
 
 // array of questions for user
-const getGit = {
+const questions = [
     // initialize set of questions  
     // questions to identify creator  
-    // enter username
+{
     type: "input",
     name: "username",
     message: "What is your GitHub username?",
@@ -31,11 +31,10 @@ const getGit = {
         return true;
     }
 },
-    const questions = [
     // title question
     {   // breakdown of components
         // note type
-        type: "input",
+        type: 'input',
         // note name
         name: "title",
         // note message that will be deployed
